@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:hint="nome"
+        android:inputType="textCapWords"
         />
 
     <EditText android:id= "@+id/activity_cadastrar_aluno_telefone"
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:hint="telefone"
+        android:inputType="phone"
         />
 
     <EditText android:id= "@+id/activity_cadastrar_aluno_email"
@@ -26,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:hint="email"
+        android:inputType="textEmailAddress"
         />
 
     <Button android:id="@+id/activity_cadastrar_aluno_botao"
