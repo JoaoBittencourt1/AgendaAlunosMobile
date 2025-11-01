@@ -1,18 +1,16 @@
 package com.example.agenda;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,9 +18,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_main);
-        List<String> alunos = new ArrayList<>(Arrays.asList("Joao", "Pedro", "Guilherme"));
-        ListView listaDeAlunos = findViewById(R.id.activity_main_listaalunos);
-        listaDeAlunos.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alunos));
+        AlunoDAO dao = new AlunoDAO();
 
+        ListView listaDeAlunos = findViewById(R.id.activity_main_listaalunos);
+        listaDeAlunos.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dao.todos()));
+
+        FloatingActionButton botaosadicionar = findViewById(R.id.floatingActionButton12);
+
+        botaosadicionar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CadastrarAlunosActivity.class));
+            }
+        });
     }
 }

@@ -1,5 +1,6 @@
 package com.example.agenda;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,8 @@ public class CadastrarAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_alunos);
 
+        AlunoDAO dao = new AlunoDAO();
+
         Button botaosalvar = findViewById(R.id.activity_cadastrar_aluno_botao);
 
         final EditText nomeAluno = findViewById(R.id.activity_cadastrar_aluno_nome);
@@ -36,11 +39,11 @@ public class CadastrarAlunosActivity extends AppCompatActivity {
 
                 var alunoCriado = new Aluno(nome, telefone, email);
 
+                dao.salva(alunoCriado);
 
+                startActivity(new Intent(CadastrarAlunosActivity.this, MainActivity.class)); // ir para outra activity
                 Toast.makeText(CadastrarAlunosActivity.this, "Cadastrado com sucesso!", Toast.LENGTH_LONG).show();
-                Toast.makeText(CadastrarAlunosActivity.this, alunoCriado.getNome(), Toast.LENGTH_LONG).show();
-                Toast.makeText(CadastrarAlunosActivity.this, alunoCriado.getTelefone(), Toast.LENGTH_LONG).show();
-                Toast.makeText(CadastrarAlunosActivity.this, alunoCriado.getEmail(), Toast.LENGTH_LONG).show();
+
             }
         });
 
