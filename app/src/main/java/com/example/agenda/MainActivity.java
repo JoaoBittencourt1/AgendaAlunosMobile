@@ -18,10 +18,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_main);
-        AlunoDAO dao = new AlunoDAO();
 
-        ListView listaDeAlunos = findViewById(R.id.activity_main_listaalunos);
-        listaDeAlunos.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dao.todos()));
+
+
 
         FloatingActionButton botaosadicionar = findViewById(R.id.floatingActionButton12);
 
@@ -29,7 +28,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, CadastrarAlunosActivity.class));
+              
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        AlunoDAO dao = new AlunoDAO();
+
+        ListView listaDeAlunos = findViewById(R.id.activity_main_listaalunos);
+        listaDeAlunos.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dao.todos()));
     }
 }

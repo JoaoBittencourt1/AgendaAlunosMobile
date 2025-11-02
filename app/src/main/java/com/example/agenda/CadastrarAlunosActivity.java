@@ -44,6 +44,7 @@ public class CadastrarAlunosActivity extends AppCompatActivity {
                 startActivity(new Intent(CadastrarAlunosActivity.this, MainActivity.class)); // ir para outra activity
                 Toast.makeText(CadastrarAlunosActivity.this, "Cadastrado com sucesso!", Toast.LENGTH_LONG).show();
 
+                finish();
             }
         });
 
